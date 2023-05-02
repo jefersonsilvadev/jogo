@@ -1,10 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { Camera, CameraType } from 'expo-camera';
+import { useState } from 'react';
 
 export default function App() {
+
+  const [permission, requestPermission] = Camera.useCameraPermissions();
+
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Hello Worlddddddd!</Text>
+      <Button title='Abrir Camera' onPress={requestPermission}/>
+      <Camera style={styles.camera} type={CameraType.back}></Camera>
       <StatusBar style="auto" />
     </View>
   );
@@ -17,4 +25,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  camera: {
+    width: '100%',
+    height: '40%',
+  }
+ 
 });
